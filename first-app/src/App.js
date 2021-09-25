@@ -11,7 +11,8 @@ class App extends Component {
   changeHandler = () => {
       this.setState({
           number: this.state.number + 1
-      })
+      }, ()=>{console.log(`new number: ${this.state.number}`)})
+      console.log(this.state.number)
   }
 
   render() {
