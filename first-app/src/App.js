@@ -1,17 +1,24 @@
-import React, { Component } from "react";
-import Hi from "./Hi";
+import React, { Component} from "react";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      number: 0
+    };
+  }
+
+  changeHandler = () => {
+      this.setState({
+          number: this.state.number + 1
+      })
+  }
+
   render() {
     return (
       <>
-        <div className="container">
-          <h1>Hossein</h1>
-          <p>react tutorial</p>
-          <Hi></Hi> {/* in baraye zamani hast ke mikhaim chizi to in tag benvisim */}
-          <Hi />
-        </div>
-        <Hi />
+        <h1>{this.state.number}</h1>
+        <button onClick={this.changeHandler}>add</button>
       </>
     );
   }
