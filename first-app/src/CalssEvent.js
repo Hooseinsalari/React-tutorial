@@ -8,22 +8,23 @@ class CalssEvent extends Component {
     constructor(){
         super();
         this.state={
-            paragragh: 'text1'
+            text: ''
         }
-        this.ClickHandler = this.ClickHandler.bind(this)
     }
 
-    ClickHandler() {
+    changeHandler = event => {
         this.setState({
-            paragragh:"text2"
+            text : event.target.value
         })
+        console.log(event.target.value)
     }
 
     render() {
         return (
             <div>
+                <input type="text" value={this.state.text} onChange={this.changeHandler}/>
+                <br/>
                 <button onClick={this.ClickHandler}>Class Event</button>
-                <h1>{this.state.paragragh}</h1>
             </div>
         );
     }
