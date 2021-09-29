@@ -1,24 +1,13 @@
 import React, { Component} from "react";
 
-import Login from "./Login";
+import Foods from "./Foods";
 
 class App extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-      text: 'Hello'
-    }
-  }
-  
-  sayHi = () => {
-    console.log(this.state.text)
-  }
-  
   render() {
     return(
       <div>
-        <Login />
+        <Foods />
       </div>
     )
   }
