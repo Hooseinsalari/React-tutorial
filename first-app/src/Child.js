@@ -1,27 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ReactDom from "react-dom";
 
-class Child extends Component {
-    constructor(){
-        super();
-        this.input = React.createRef();  //input ke aval neveshtam yek esme mitone har chizi bashe vali mortabet
-    }
+const Child = () => {
 
-    showRef = () => {
-        console.log(this.input.current.value)
-    }
+    return ReactDom.createPortal (
+        <div>
+            <h1>Hossein</h1>
+        </div>,
+        document.getElementById("child-root")
+    );
 
-    componentDidMount(){
-        this.input.current.focus();
-    }
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.showRef}>Show</button>
-                <input type="text" ref={this.input} />
-            </div>
-        );
-    }
 }
 
 export default Child;
