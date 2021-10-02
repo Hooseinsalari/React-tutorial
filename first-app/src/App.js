@@ -1,15 +1,13 @@
-import React, { Component} from "react";
-
-import Foods from "./Foods";
+import React, { Component } from 'react';
+import Child from './Child';
 
 class App extends Component {
-
   render() {
-    return(
+    return (
       <div>
-        <Foods />
+        <Child />
       </div>
-    )
+    );
   }
 }
 
