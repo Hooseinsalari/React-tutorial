@@ -1,15 +1,23 @@
-import React from 'react';
-import ReactDom from "react-dom";
+import React, { Component } from 'react';
 
-const Child = () => {
 
-    return ReactDom.createPortal (
-        <div>
-            <h1>Hossein</h1>
-        </div>,
-        document.getElementById("child-root")
-    );
 
+class Child extends Component {
+
+    showError = () => {
+        const random = Math.random();
+        if(random > 0.7){
+            throw new Error("An error hossein")
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.showError}>Click</button>
+            </div>
+        );
+    }
 }
 
 export default Child;
