@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Post from "./component/Post";
+import SendPost from "./component/SendPost";
 
 class App extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class App extends Component {
     const { postData } = this.state;
     return (
       <div>
+        <SendPost />
         {/* <button onClick={this.getData}>get data</button>
         <button onClick={this.sendPost}>send post</button>
         <button onClick={this.deletePost}>delete post</button> */}
