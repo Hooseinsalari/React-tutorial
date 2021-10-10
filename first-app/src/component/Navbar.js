@@ -13,7 +13,7 @@ class Navbar extends Component {
             <Link to="/Document">Document</Link>
           </li>
           <li>
-            <Link to="/Docs">Docs</Link>
+            <Link to="/Docs/Hossein">Docs</Link>
           </li>
           <li>
             <Link to="/Products">Products</Link>
