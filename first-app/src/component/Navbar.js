@@ -10,7 +10,7 @@ class Navbar extends Component {
             <Link to="/">Homepage</Link>
           </li>
           <li>
-            <Link to="/Document">Document</Link>
+            <Link to="/About">About</Link>
           </li>
           <li>
             <Link to="/Docs/Hossein">Docs</Link>

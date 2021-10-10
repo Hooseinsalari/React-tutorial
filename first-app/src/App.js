@@ -5,7 +5,7 @@ import { Route , Switch , Redirect } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import Homepage from './component/Homepage';
 import Docs from './component/Docs';
-import Document from './component/Document';
+import About from './component/About';
 import Products from './component/Products';
 import Product from './component/Product';
 import NoteFound from './component/NoteFound';
@@ -18,7 +18,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route path="/Products/:id" component={Product} />
-            <Route path="/Document" component={Document} />
+            <Route path="/About" component={About} />
             <Route path="/Docs/:writer?" component={Docs} />
             <Route path="/Products" render={(props) => <Products name="Hossein" {...props} />} />
             <Route path="/NoteFound" component={NoteFound} />
