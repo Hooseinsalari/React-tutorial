@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Data from './components/Data';
+import Logger from './components/Logger';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Data />
+        <Logger />
       </div>
     );
   }
