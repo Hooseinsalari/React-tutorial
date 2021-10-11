@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Counter from './components/Counter';
+import Data from './components/Data';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Counter />
+        <Data />
       </div>
     );
   }
