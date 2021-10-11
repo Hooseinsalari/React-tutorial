@@ -7,6 +7,10 @@ const Logger = () => {
 
     useEffect(() => {
         console.log(num1)
+
+        return () => {
+            console.log("Logger component removed from DOM.")
+        }
     },[])
 
     return (
