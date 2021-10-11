@@ -2,10 +2,10 @@ import React , {useState} from 'react';
 
 const Counter = () => {
 
-    const [number , setNumber] = useState(50);
+    const [number , setNumber] = useState(0);
 
     const clickHandler = () => {
-        setNumber( number + 1 )
+        setNumber( (prevNumber) => prevNumber + 1 )
     }
 
     return (
