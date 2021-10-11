@@ -2,12 +2,18 @@ import React , {useState} from 'react';
 
 const Data = () => {
 
-    const [data , setData] = useState({name: "", age:''})
+    const [data , setData] = useState([])
+    const [number , setNumber] = useState(1)
+
+    const itemHandler = () => {
+        setNumber((prevNumber) => prevNumber +1 )
+        
+        setData([...data, `item${number}`])
+    }
 
     return (
         <div>
-            <input type="text" value={data.name} onChange={(event) => setData({...data , name: event.target.value})} />
-            <input type="text" value={data.age} onChange={(event) => setData({...data ,age: event.target.value})} />
+            <button onClick={itemHandler}>Add Item</button>
             <p>{JSON.stringify(data)}</p>
         </div>
     );
