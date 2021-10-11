@@ -7,7 +7,7 @@ const Logger = () => {
 
     useEffect(() => {
         console.log(num1)
-    },[num1])
+    },[])
 
     return (
         <div>
