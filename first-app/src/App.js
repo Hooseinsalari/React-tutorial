@@ -1,10 +1,10 @@
 import React from 'react';
-import Counter from './components/Counter';
+import GetData from './components/GetData';
 
 const App = () => {
   return (
     <div>
-      <Counter />
+      <GetData />
     </div>
   );
 };
