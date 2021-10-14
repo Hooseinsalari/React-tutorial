@@ -1,25 +1,17 @@
-import React, {useState, useCallback} from 'react';
-import ComA from './components/ComA';
-import ComB from './components/ComB';
+import React, {useRef, useEffect} from 'react';
 
 const App = () => {
-  console.log("App rendered")
 
-  const [valueA, setValueA] = useState("A"); 
-  const [valueB, setValueB] = useState("B");
+  const input = useRef(null);
 
-  const changeHandlerA = useCallback(() => {
-    setValueA("AA")
-  }, [valueA])
-
-  const changeHandlerB = useCallback(() => {
-    setValueB("BB")
-  },[valueB])
+  useEffect(() =>{
+    console.log(input.current.type);
+    input.current.focus();
+  }, [])
 
   return (
     <div>
-      <ComA value={valueA} changeHandler={changeHandlerA} />
-      <ComB value={valueB} changeHandler={changeHandlerB} />
+      <input ref={input} type="text"  />
     </div>
   );
 };
