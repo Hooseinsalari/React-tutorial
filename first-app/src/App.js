@@ -1,30 +1,25 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useCallback} from 'react';
+import ComA from './components/ComA';
+import ComB from './components/ComB';
 
 const App = () => {
-  const [isShown, setIsShown] = useState(true);
-  const [number, setNumber ] = useState(0); 
+  console.log("App rendered")
 
-  const slow = useMemo(() => {
-    for(let i=0; i<100000000; i++) {}
-    return isShown;
-  },[isShown])
+  const [valueA, setValueA] = useState("A"); 
+  const [valueB, setValueB] = useState("B");
 
-  const shownHandler = () => {
-    setIsShown(!isShown)
-  }
+  const changeHandlerA = useCallback(() => {
+    setValueA("AA")
+  }, [valueA])
 
-  const numberHandler = () => {
-    setNumber((prevnumber) => prevnumber + 1)
-  }
+  const changeHandlerB = useCallback(() => {
+    setValueB("BB")
+  },[valueB])
 
   return (
     <div>
-      <button onClick={shownHandler}>Shown</button>
-      <h1>{slow? "show" : "hide"}</h1>
-      <h2>{console.log(isShown)}</h2>
-      <br />
-      <button onClick={numberHandler}>+</button>
-      <h1>{number}</h1>
+      <ComA value={valueA} changeHandler={changeHandlerA} />
+      <ComB value={valueB} changeHandler={changeHandlerB} />
     </div>
   );
 };
