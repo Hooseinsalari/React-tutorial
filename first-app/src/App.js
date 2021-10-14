@@ -1,17 +1,14 @@
-import React, {useRef, useEffect} from 'react';
+import React, { useState } from 'react';
+import Landing from './components/Landing';
+import Login from './components/Login';
 
 const App = () => {
-
-  const input = useRef(null);
-
-  useEffect(() =>{
-    console.log(input.current.type);
-    input.current.focus();
-  }, [])
+  const [toggle, setToggle] = useState(true)
 
   return (
     <div>
-      <input ref={input} type="text"  />
+      <button onClick={() => setToggle(!toggle)}>toggle</button>    
+      {toggle ? <Landing /> : <Login />}
     </div>
   );
 };
