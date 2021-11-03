@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import Landing from './components/Landing';
-import Login from './components/Login';
+import React from 'react';
+import ProductsList from './components/ProductsList';
 
 const App = () => {
-  const [toggle, setToggle] = useState(true)
+ 
 
   return (
     <div>
-      <button onClick={() => setToggle(!toggle)}>toggle</button>    
-      {toggle ? <Landing /> : <Login />}
+       <h1>SHOP</h1>
+      <ProductsList />
     </div>
   );
 };
