@@ -1,7 +1,6 @@
 import React from "react";
 
 const Navbar = ({total}) => {
-    console.log("navbar render")
 
   return (
     <div>

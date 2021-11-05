@@ -3,7 +3,6 @@ import Product from "./Product";
 
 class ProductsList extends Component {
   render() {
-    console.log("productLiat render")
     const {
         products,
         removeHandler,
@@ -24,9 +23,7 @@ class ProductsList extends Component {
             key={product.id}
             quantity={product.quantity}
             removeHandler={() => removeHandler(product.id)}
-            inincreamentHandler={() =>
-              inincreamentHandler(product.id)
-            }
+            inincreamentHandler={() => inincreamentHandler(product.id)}
             decreaseHandler={() => decreaseHandler(product.id)}
             changeHandle={(event) => changeHandle(product.id, event)}
           />

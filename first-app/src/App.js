@@ -5,13 +5,12 @@ import ProductsList from "./components/ProductsList";
 class App extends Component {
   constructor() {
     super();
-    console.log("constructor render")
     this.state = {
       products: [
         { title: "product1", price: "99 $", id: 1, quantity: 1 },
         { title: "product2", price: "80 $", id: 2, quantity: 1 },
         { title: "product3", price: "70 $", id: 3, quantity: 1 },
-      ],
+      ]
     };
   }
   removeHandler = (id) => {
@@ -22,17 +21,22 @@ class App extends Component {
   };
 
   inincreamentHandler = (id) => {
-    const products = [...this.state.products];
-    const selectedItem = products.find((product) => product.id === id);
-    console.log(selectedItem)
-    selectedItem.quantity++;
-    this.setState({ products: products });
+    const index = this.state.products.findIndex((item) => item.id === id)
+    const product = {...this.state.products[index]}
+    product.quantity++;
+    const products = [...this.state.products]
+    products[index] = product;
+
+    this.setState({products})
+  
   };
 
   decreaseHandler = (id) => {
-    const products = [...this.state.products];
-    const selectedItem = products.find((product) => product.id === id);
-    selectedItem.quantity--;
+    const index = this.state.products.findIndex((item) => item.id === id)
+    const product = {...this.state.products[index]}
+    product.quantity--;
+    const products = [...this.state.products]
+    products[index] = product;
 
     this.setState({ products: products.filter((pro) => pro.quantity > 0) });
   };
@@ -48,14 +52,11 @@ class App extends Component {
     console.log("componentDidMount")
   }
 
-  componentDidUpdate(prevProps, prevState){
-    console.log("componentsDidUpdate")
+  componentDidUpdate(prevProps, prevState) {
     console.log(prevState)
   }
 
-  
   render() {
-    console.log("app rendered")
     return (
       <div>
         <Navbar

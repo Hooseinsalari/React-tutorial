@@ -12,7 +12,6 @@ const Product = (props) => {
     removeHandler,
    } = props;
 
-   console.log("product render")
 
   return (
     <div className={styles.container}>
