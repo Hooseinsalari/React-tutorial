@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ClassCounter from "./components/ClassCounter";
+import FunctionalComponent from "./components/FunctionalComponent";
 import Navbar from "./components/Navbar";
 import ProductsList from "./components/ProductsList";
 
@@ -59,7 +61,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar
+        {/* <Navbar
           total={this.state.products.filter((pro) => pro.quantity > 0).length}
         />
         <ProductsList
@@ -68,7 +70,9 @@ class App extends Component {
           inincreamentHandler={this.inincreamentHandler}
           decreaseHandler={this.decreaseHandler}
           changeHandle={this.changeHandle}
-        />
+        /> */}
+        {/* <ClassCounter /> */}
+        <FunctionalComponent />
       </div>
     );
   }
