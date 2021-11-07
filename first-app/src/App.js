@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import ClassCounter from "./components/ClassCounter";
+import ClassTimer from "./components/ClassTimer";
 import FunctionalComponent from "./components/FunctionalComponent";
 import Navbar from "./components/Navbar";
 import ProductsList from "./components/ProductsList";
+
+import "./App.css";
+import FunctionTimer from "./components/FunctionTimer";
 
 class App extends Component {
   constructor() {
@@ -12,7 +16,8 @@ class App extends Component {
         { title: "product1", price: "99 $", id: 1, quantity: 1 },
         { title: "product2", price: "80 $", id: 2, quantity: 1 },
         { title: "product3", price: "70 $", id: 3, quantity: 1 },
-      ]
+      ],
+      show: true
     };
   }
   removeHandler = (id) => {
@@ -54,13 +59,13 @@ class App extends Component {
     console.log("componentDidMount")
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(prevState)
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevState)
+  // }
 
   render() {
     return (
-      <div>
+      <div className="App">
         {/* <Navbar
           total={this.state.products.filter((pro) => pro.quantity > 0).length}
         />
@@ -72,7 +77,11 @@ class App extends Component {
           changeHandle={this.changeHandle}
         /> */}
         {/* <ClassCounter /> */}
-        <FunctionalComponent />
+        {/* <FunctionalComponent /> */}
+        <button onClick={() => this.setState({show: !this.state.show})}>
+          {this.state.show ? "Hide" : "Show"}
+        </button>
+        {this.state.show && <FunctionTimer />}
       </div>
     );
   }
