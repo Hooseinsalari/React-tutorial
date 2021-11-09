@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import ClassCounter from "./components/ClassCounter";
-import ClassTimer from "./components/ClassTimer";
-import FunctionalComponent from "./components/FunctionalComponent";
-import Navbar from "./components/Navbar";
-import ProductsList from "./components/ProductsList";
+import React, { Component, createContext } from "react";
+// import ClassCounter from "./components/ClassCounter";
+// import ClassTimer from "./components/ClassTimer";
+// import FunctionalComponent from "./components/FunctionalComponent";
+// import Navbar from "./components/Navbar";
+// import ProductsList from "./components/ProductsList";
 
 import "./App.css";
-import FunctionTimer from "./components/FunctionTimer";
-import RefHooks from "./components/useRef/RefHooks";
+// import FunctionTimer from "./components/FunctionTimer";
+// import RefHooks from "./components/useRef/RefHooks";
 
+import Parent from "./components/context/Parent";
+export const Message = React.createContext();
 class App extends Component {
   constructor() {
     super();
@@ -18,7 +20,8 @@ class App extends Component {
         { title: "product2", price: "80 $", id: 2, quantity: 1 },
         { title: "product3", price: "70 $", id: 3, quantity: 1 },
       ],
-      show: true
+      show: true,
+      text:"hello hossein i am from app"
     };
   }
   removeHandler = (id) => {
@@ -64,6 +67,8 @@ class App extends Component {
   //   console.log(prevState)
   // }
 
+  
+
   render() {
     return (
       <div className="App">
@@ -83,7 +88,10 @@ class App extends Component {
           {this.state.show ? "Hide" : "Show"}
         </button>
         {this.state.show && <FunctionTimer />} */}
-        <RefHooks />
+        {/* <RefHooks /> */}
+        <Message.Provider value={this.state.text}>
+          <Parent />
+        </Message.Provider>
       </div>
     );
   }
