@@ -7,6 +7,7 @@ import ProductsList from "./components/ProductsList";
 
 import "./App.css";
 import FunctionTimer from "./components/FunctionTimer";
+import RefHooks from "./components/useRef/RefHooks";
 
 class App extends Component {
   constructor() {
@@ -78,10 +79,11 @@ class App extends Component {
         /> */}
         {/* <ClassCounter /> */}
         {/* <FunctionalComponent /> */}
-        <button onClick={() => this.setState({show: !this.state.show})}>
+        {/* <button onClick={() => this.setState({show: !this.state.show})}>
           {this.state.show ? "Hide" : "Show"}
         </button>
-        {this.state.show && <FunctionTimer />}
+        {this.state.show && <FunctionTimer />} */}
+        <RefHooks />
       </div>
     );
   }
