@@ -1,100 +1,49 @@
-import React, { Component, createContext } from "react";
-// import ClassCounter from "./components/ClassCounter";
-// import ClassTimer from "./components/ClassTimer";
-// import FunctionalComponent from "./components/FunctionalComponent";
-// import Navbar from "./components/Navbar";
-// import ProductsList from "./components/ProductsList";
+import React, { useReducer } from "react";
 
-import "./App.css";
-// import FunctionTimer from "./components/FunctionTimer";
-// import RefHooks from "./components/useRef/RefHooks";
-
-import Parent from "./components/context/Parent";
-export const Message = React.createContext();
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      products: [
-        { title: "product1", price: "99 $", id: 1, quantity: 1 },
-        { title: "product2", price: "80 $", id: 2, quantity: 1 },
-        { title: "product3", price: "70 $", id: 3, quantity: 1 },
-      ],
-      show: true,
-      text:"hello hossein i am from app"
-    };
+const initialState = {
+  num1: 0,
+  num2: 0,
+};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Up":
+      return { ...state, num1: state.num1 + action.amount };
+    case "Up2":
+      return { ...state, num2: state.num2 + action.amount };
+    case "Down":
+      return { ...state, num1: state.num1 - action.amount };
+    case "Down2":
+      return { ...state, num2: state.num2 - action.amount };
+    case "Reset":
+      return initialState;
+    default:
+      return state;
   }
-  removeHandler = (id) => {
-    const filterProduct = this.state.products.filter(
-      (product) => product.id !== id
-    );
-    this.setState({ products: filterProduct });
-  };
+};
 
-  inincreamentHandler = (id) => {
-    const index = this.state.products.findIndex((item) => item.id === id)
-    const product = {...this.state.products[index]}
-    product.quantity++;
-    const products = [...this.state.products]
-    products[index] = product;
+const App = () => {
+  const [number, dispatch] = useReducer(reducer, initialState);
 
-    this.setState({products})
-  
-  };
-
-  decreaseHandler = (id) => {
-    const index = this.state.products.findIndex((item) => item.id === id)
-    const product = {...this.state.products[index]}
-    product.quantity--;
-    const products = [...this.state.products]
-    products[index] = product;
-
-    this.setState({ products: products.filter((pro) => pro.quantity > 0) });
-  };
-
-  changeHandle = (id, event) => {
-    const products = [...this.state.products];
-    const titleChanged = products.find((product) => product.id === id);
-    titleChanged.title = event.target.value;
-    this.setState({ products });
-  };
-
-  componentDidMount(){
-    console.log("componentDidMount")
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(prevState)
-  // }
-
-  
-
-  render() {
-    return (
-      <div className="App">
-        {/* <Navbar
-          total={this.state.products.filter((pro) => pro.quantity > 0).length}
-        />
-        <ProductsList
-          products={this.state.products}
-          removeHandler={this.removeHandler}
-          inincreamentHandler={this.inincreamentHandler}
-          decreaseHandler={this.decreaseHandler}
-          changeHandle={this.changeHandle}
-        /> */}
-        {/* <ClassCounter /> */}
-        {/* <FunctionalComponent /> */}
-        {/* <button onClick={() => this.setState({show: !this.state.show})}>
-          {this.state.show ? "Hide" : "Show"}
+  return (
+    <div>
+      <div>
+        <h2>{number.num1}</h2>
+        <button onClick={() => dispatch({ type: "Up", amount: 5 })}>Up</button>
+        <button onClick={() => dispatch({ type: "Reset" })}>Reset</button>
+        <button onClick={() => dispatch({ type: "Down", amount: 10 })}>
+          Down
         </button>
-        {this.state.show && <FunctionTimer />} */}
-        {/* <RefHooks /> */}
-        <Message.Provider value={this.state.text}>
-          <Parent />
-        </Message.Provider>
       </div>
-    );
-  }
-}
+      <div>
+        <h2>{number.num2}</h2>
+        <button onClick={() => dispatch({ type: "Up2", amount: 1 })}>Up</button>
+        <button onClick={() => dispatch({ type: "Reset" })}>Reset</button>
+        <button onClick={() => dispatch({ type: "Down2", amount: 2 })}>
+          Down
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default App;
