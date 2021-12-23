@@ -1,47 +1,15 @@
-import React, { useReducer } from "react";
-
-const initialState = {
-  num1: 0,
-  num2: 0,
-};
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "Up":
-      return { ...state, num1: state.num1 + action.amount };
-    case "Up2":
-      return { ...state, num2: state.num2 + action.amount };
-    case "Down":
-      return { ...state, num1: state.num1 - action.amount };
-    case "Down2":
-      return { ...state, num2: state.num2 - action.amount };
-    case "Reset":
-      return initialState;
-    default:
-      return state;
-  }
-};
+import React, { useEffect, useReducer, useState } from "react";
+import axios from "axios";
+import useFetch from "./hook/useFetch";
 
 const App = () => {
-  const [number, dispatch] = useReducer(reducer, initialState);
+  const {data, error, loading} = useFetch("https://jsonplaceholder.typicode.com/users")
 
   return (
     <div>
-      <div>
-        <h2>{number.num1}</h2>
-        <button onClick={() => dispatch({ type: "Up", amount: 5 })}>Up</button>
-        <button onClick={() => dispatch({ type: "Reset" })}>Reset</button>
-        <button onClick={() => dispatch({ type: "Down", amount: 10 })}>
-          Down
-        </button>
-      </div>
-      <div>
-        <h2>{number.num2}</h2>
-        <button onClick={() => dispatch({ type: "Up2", amount: 1 })}>Up</button>
-        <button onClick={() => dispatch({ type: "Reset" })}>Reset</button>
-        <button onClick={() => dispatch({ type: "Down2", amount: 2 })}>
-          Down
-        </button>
-      </div>
+      {loading && <h1>Loading...</h1>}      
+      {error && <h1>{error}</h1>}
+      {data && data.map((item) => <li>{item.name}</li>)}
     </div>
   );
 };
