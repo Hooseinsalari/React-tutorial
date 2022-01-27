@@ -6,4 +6,4 @@ import App from "./App";
 // const header = <h1>Hossein</h1>
 // ReactDom.render(header, document.getElementById("root"))
 
-ReactDom.render(<App />, document.getElementById("root"));
+ReactDom.render(<App />, document.getElementById("root"))
