@@ -1,19 +1,13 @@
-import React, { useState  } from 'react';
+import React, { Suspense  } from 'react';
+import Api from './Api';
 
 const App = () => {
 
-  const [value, setValue] = useState(0)
-
-  const increaseNumber = () => {
-    setValue((prevStete) => prevStete + 1)
-    setValue((prevStete) => prevStete + 1)
-  }
-
-  console.log("render")
   return (
     <div style={{textAlign: 'center'}}>
-      <button onClick={increaseNumber}>increace</button>
-      <h1>{value}</h1>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Api />
+      </Suspense>
     </div>
   );
 };
