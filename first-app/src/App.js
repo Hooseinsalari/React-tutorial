@@ -1,25 +1,19 @@
-import React, { useState, useTransition } from 'react';
-import { numbersCreator } from './numbers';
-import NumbersList from './NumbersList';
+import React, { useState  } from 'react';
 
 const App = () => {
 
-  const [value, setValue] = useState('')
-  const [numbers, setNumbers] = useState(numbersCreator())
-  const [isPending, startTransition] = useTransition()
+  const [value, setValue] = useState(0)
 
-  const changeHandler = (event) => {
-    setValue(event.target.value)
-    setNumbers(numbersCreator(event.target.value))
+  const increaseNumber = () => {
+    setValue((prevStete) => prevStete + 1)
+    setValue((prevStete) => prevStete + 1)
   }
 
+  console.log("render")
   return (
     <div style={{textAlign: 'center'}}>
-      <input type="text" value={value} onChange={changeHandler} />
-      {
-        isPending ? <h1>Loading...</h1> : <NumbersList numbers={numbers} />
-      }
-      
+      <button onClick={increaseNumber}>increace</button>
+      <h1>{value}</h1>
     </div>
   );
 };
