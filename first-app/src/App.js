@@ -1,5 +1,6 @@
 import React, { useState, useTransition } from 'react';
 import { numbersCreator } from './numbers';
+import NumbersList from './NumbersList';
 
 const App = () => {
 
@@ -9,16 +10,14 @@ const App = () => {
 
   const changeHandler = (event) => {
     setValue(event.target.value)
-    startTransition(() => {
-      setNumbers(numbersCreator(event.target.value))
-    })
+    setNumbers(numbersCreator(event.target.value))
   }
 
   return (
     <div style={{textAlign: 'center'}}>
       <input type="text" value={value} onChange={changeHandler} />
       {
-        isPending ? <h1>Loading...</h1> : numbers.map((item) => <p key={item}>{item}</p>)
+        isPending ? <h1>Loading...</h1> : <NumbersList numbers={numbers} />
       }
       
     </div>
