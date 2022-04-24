@@ -1,38 +1,28 @@
-import React , {Component} from "react";
-import axios from "axios";
-import Post from "./Post";
-import SendPost from "./SendPost";
+import React, { useState, useTransition } from 'react';
+import { numbersCreator } from './numbers';
 
+const App = () => {
 
-class App extends Component {
+  const [value, setValue] = useState('')
+  const [numbers, setNumbers] = useState(numbersCreator())
+  const [isPending, startTransition] = useTransition()
 
-  constructor() {
-    super() 
-    this.state = {
-      data: []
-    }
-
+  const changeHandler = (event) => {
+    setValue(event.target.value)
+    startTransition(() => {
+      setNumbers(numbersCreator(event.target.value))
+    })
   }
 
-  // componentDidMount() {
-  //   const data = {
-  //     title: "ali"
-  //   }
-  //   axios.post("https://jsonplaceholder.typicode.com/posts/", data)
-  //     .then(response => console.log(response.data))
-  //     .catch((error) => console.log(error))
-  // }
-  
-  render(){
-    return (
-      <div>
-        {
-          // this.state.data.map((item) => <Post key={item.id} data={item} />)
-          <SendPost />
-        }
-      </div>
-    )
-  }
-}
+  return (
+    <div style={{textAlign: 'center'}}>
+      <input type="text" value={value} onChange={changeHandler} />
+      {
+        isPending ? <h1>Loading...</h1> : numbers.map((item) => <p key={item}>{item}</p>)
+      }
+      
+    </div>
+  );
+};
 
 export default App;
